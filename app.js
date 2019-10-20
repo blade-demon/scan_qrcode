@@ -4,12 +4,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
-var session = require("express-session");
 
 //Configure mongoose's promise to global promise
 mongoose.promise = global.Promise;
 mongoose.connect(
-	"mongodb://dbuser:lufax2019@ds149146.mlab.com:49146/scanqr-login",
+	"mongodb://lufax:lufax2019@ds137488.mlab.com:37488/auth-login",
 	{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
 	err => {
 		if (err) {
@@ -24,14 +23,6 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(
-	session({
-		secret: "passport",
-		cookie: { maxAge: 60000 },
-		saveUninitialized: false
-	})
-);
-
 app.set("views", __dirname + "/views");
 app.set("view engine", "pug");
 app.use(require("./routes"));

@@ -3,13 +3,13 @@ const router = express.Router();
 
 router.get("/register", (req, res) => {
 	res.render("register", {
-		title: "??"
+		title: "注册"
 	});
 });
 
 router.get("/login", (req, res) => {
 	res.render("login", {
-		title: "??"
+		title: "登录"
 	});
 });
 

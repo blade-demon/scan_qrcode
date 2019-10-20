@@ -6,7 +6,6 @@ document.body.onload = function() {
 	loginBtn.addEventListener("click", function(e) {
 		const email = emailInput.value;
 		const password = passwordInput.value;
-		console.log("do login");
 		axios
 			.post("/api/user/login", { email, password })
 			.then(res => {

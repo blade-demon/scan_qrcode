@@ -4,7 +4,6 @@ const router = require("express").Router();
 
 router.get("/:id", auth, async (req, res) => {
 	try {
-		console.log(req.params.id);
 		const user = await User.findById(req.params.id);
 		res.send({ user });
 	} catch (e) {
