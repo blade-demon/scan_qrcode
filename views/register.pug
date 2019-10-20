@@ -1,0 +1,11 @@
+extends ./layout.pug
+block content
+    h1= title
+    form(method="post" action="/api/users")
+        | 邮箱
+        input(name="email")
+        br
+        | 密码：
+        input(nane="password")
+        br
+        button(type="submit") 提交
