@@ -2,6 +2,16 @@ const User = require("../../models/user");
 const auth = require("../../middleware/auth");
 const router = require("express").Router();
 
+router.get("/:id", auth, async (req, res) => {
+	try {
+		console.log(req.params.id);
+		const user = await User.findById(req.params.id);
+		res.send({ user });
+	} catch (e) {
+		res.status(400).send();
+	}
+});
+
 router.post("/register", async (req, res) => {
 	const user = new User(req.body);
 
