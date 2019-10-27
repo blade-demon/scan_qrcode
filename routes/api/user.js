@@ -2,6 +2,15 @@ const User = require("../../models/user");
 const auth = require("../../middleware/auth");
 const router = require("express").Router();
 
+router.get("/", async (req, res) => {
+	try {
+		const users = await User.find();
+		res.send({ users });
+	} catch (e) {
+		res.status(500).send();
+	}
+});
+
 router.get("/:id", auth, async (req, res) => {
 	try {
 		const user = await User.findById(req.params.id);

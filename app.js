@@ -1,6 +1,5 @@
 var express = require("express");
 var app = express();
-var path = require("path");
 var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
@@ -22,8 +21,26 @@ mongoose.connect(
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-app.set("views", __dirname + "/views");
-app.set("view engine", "pug");
 app.use(require("./routes"));
-app.listen(3000, () => console.log("Server running on http://localhost:3000/"));
+
+if (process.env.NODE_ENV === "production") {
+	// Express will serve up production assets like our main.js file or main.css file!
+	app.use(express.static("client/build"));
+	// Express will serve up index.html file if it doesn't recognize the route!
+	const path = require("path");
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	});
+}
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, err => {
+	if (!err) {
+		/* eslint no-console: 0*/
+		console.log(`Server is running on port: ${PORT}.`);
+	} else {
+		/* eslint no-console: 0*/
+		console.log(`Failed to start the server: ${JSON.stringify(err)}`);
+	}
+});
