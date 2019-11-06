@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 //Configure mongoose's promise to global promise
 mongoose.promise = global.Promise;
 mongoose.connect(
-	"mongodb://lufax:lufax2019@ds137488.mlab.com:37488/auth-login",
+	"mongodb://localhost:27017/auth-login",
 	{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
 	err => {
 		if (err) {

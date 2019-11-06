@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+import history from "./history";
 import "./App.css";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
@@ -9,7 +10,7 @@ import NotFound from "./components/NotFound/NotFound";
 function App() {
 	return (
 		<div className='App'>
-			<Router>
+			<Router history={history}>
 				<Switch>
 					<Route exact path='/' component={Login} />
 					<Route exact path='/home' component={Home} />

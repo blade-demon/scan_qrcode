@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Icon, Input, Button } from "antd";
 import axios from "axios";
+import history from "../../history";
 import "./LoginForm.css";
 
 class NormalLoginForm extends React.Component {
@@ -12,9 +13,7 @@ class NormalLoginForm extends React.Component {
 				console.log("Received values of form: ", values);
 				axios
 					.post("/api/user/login", values)
-					.then(res => {
-						console.log(res.data);
-					})
+					.then(res => history.push("/home"))
 					.catch(e => {
 						console.log(e.message);
 					});

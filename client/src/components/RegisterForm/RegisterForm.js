@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Icon, Input, Button } from "antd";
+import history from "../../history";
 import axios from "axios";
 import "./RegisterForm.css";
 
@@ -12,9 +13,7 @@ class NormalRegisterForm extends React.Component {
 				console.log("Received values of form: ", values);
 				axios
 					.post("/api/user/register", values)
-					.then(res => {
-						console.log(res.data);
-					})
+					.then(res => history.push("/home"))
 					.catch(e => console.log(e));
 			}
 		});
