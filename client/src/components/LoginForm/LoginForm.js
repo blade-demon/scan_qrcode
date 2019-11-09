@@ -13,7 +13,12 @@ class NormalLoginForm extends React.Component {
 				console.log("Received values of form: ", values);
 				axios
 					.post("/api/user/login", values)
-					.then(res => history.push("/home"))
+					.then(res => {
+						const { token, user } = res.data;
+						window.localStorage.setItem("token", token);
+						window.localStorage.setItem("_id", user._id);
+						history.push("/home");
+					})
 					.catch(e => {
 						console.log(e.message);
 					});
