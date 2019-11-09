@@ -13,8 +13,10 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.3",
     "express": "~4.16.0",
+    "http": "0.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.5",
+    "socket.io": "^2.3.0",
     "validator": "^11.1.0"
   },
   "devDependencies": {

@@ -1,5 +1,7 @@
 var express = require("express");
 var app = express();
+var http = require("http").createServer(app);
+var io = require("socket.io")(http);
 var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
@@ -41,9 +43,13 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 
+io.on("connection", function(socket) {
+	console.log("a user connected");
+});
+
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, err => {
+http.listen(PORT, err => {
 	if (!err) {
 		/* eslint no-console: 0*/
 		console.log(`Server is running on port: ${PORT}.`);
