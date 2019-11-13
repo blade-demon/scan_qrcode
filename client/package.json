@@ -9,6 +9,7 @@
     "customize-cra": "^0.8.0",
     "history": "^4.10.1",
     "http-proxy-middleware": "^0.20.0",
+    "qrcode": "^1.4.4",
     "react": "^16.11.0",
     "react-app-rewired": "^2.1.4",
     "react-dom": "^16.11.0",

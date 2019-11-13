@@ -45,6 +45,7 @@ if (process.env.NODE_ENV === "production") {
 
 io.on("connection", function(socket) {
 	console.log("a user connected");
+	socket.emit("qrcode", "qrcode");
 });
 
 const PORT = process.env.PORT || 5000;
